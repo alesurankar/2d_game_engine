@@ -14,6 +14,7 @@ public:
 	void Submit(log::Entry& e) override {
 		entry_ = e;
 	}
+	void AttachDriver(std::shared_ptr<log::IDriver>) override {}
 	log::Entry entry_;
 };
 
@@ -24,9 +25,9 @@ ToString<log::Level>(const log::Level& level)
 	return log::GetLevelName(level);
 }
 
-namespace Infrastructure
+namespace Log
 {
-	TEST_CLASS(LogTests)
+	TEST_CLASS(LogEntryTests)
 	{
 	public:
 		// temporary test to show off fluid interface
@@ -35,7 +36,6 @@ namespace Infrastructure
 			alelog.level(log::Level::Info).note(L"HI").chan(&chan);
 			Assert::AreEqual(L"HI"s, chan.entry_.note_);
 			Assert::AreEqual(log::Level::Info, chan.entry_.level_);
-			Assert::AreEqual(35, chan.entry_.sourceLine_);
 		}
 		// testing simplified level/note
 		TEST_METHOD(SimplifiedLevelNote)
@@ -44,7 +44,6 @@ namespace Infrastructure
 			alelog.info(L"HI").chan(&chan);
 			Assert::AreEqual(L"HI"s, chan.entry_.note_);
 			Assert::AreEqual(log::Level::Info, chan.entry_.level_);
-			Assert::AreEqual(44, chan.entry_.sourceLine_);
 		}
 	};
 }

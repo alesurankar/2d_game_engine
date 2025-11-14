@@ -40,7 +40,7 @@ struct Dependant
 using namespace ales;
 using namespace std::string_literals;
 
-namespace Infrastructure
+namespace Ioc
 {
 	TEST_CLASS(IocSingletonTests)
 	{
