@@ -6,7 +6,6 @@ namespace ales::log
 	EntryBuilder::EntryBuilder(const wchar_t* sourceFile, const wchar_t* sourceFunctionName, int sourceLine)
 		:
 		Entry{
-			.level_ = Level::Error,
 			.sourceFile_ = sourceFile,
 			.courceFunctionName_ = sourceFunctionName,
 			.sourceLine_ = sourceLine,

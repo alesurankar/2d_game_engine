@@ -5,6 +5,7 @@ namespace ales::log
 
 	class IChannel {
 	public:
+		virtual ~IChannel() = default;
 		virtual void Submit(Entry&) = 0;
 	};
 }
