@@ -21,7 +21,7 @@ namespace ales::utl
 	}
 	StackTrace::StackTrace(const StackTrace& src)
 		:
-		pTrace = std::make_unique<backward::StackTrace>(*src.pTrace);
+		pTrace{ std::make_unique<backward::StackTrace>(*src.pTrace) }
 	{
 	}
 	StackTrace& StackTrace::operator=(const StackTrace& src)
