@@ -76,7 +76,7 @@ namespace ales::log
 	{
 		if (pDest_) {
 			if ((int)level_ <= (int)Level::Error) {
-				trace_.emplace();
+				trace_.emplace(6);
 			}
 			pDest_->Submit(*this);
 		}

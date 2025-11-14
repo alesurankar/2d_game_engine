@@ -11,7 +11,7 @@ namespace ales::utl
 {
 	class StackTrace {
 	public:
-		StackTrace();
+		StackTrace(size_t skip = 0);
 		StackTrace(const StackTrace& src);
 		StackTrace& operator=(const StackTrace& src);
 		~StackTrace();
