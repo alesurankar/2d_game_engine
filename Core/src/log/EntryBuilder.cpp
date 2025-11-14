@@ -75,6 +75,9 @@ namespace ales::log
 	EntryBuilder::~EntryBuilder()
 	{
 		if (pDest_) {
+			if ((int)level_ <= (int)Level::Error) {
+				trace_.emplace();
+			}
 			pDest_->Submit(*this);
 		}
 	}
