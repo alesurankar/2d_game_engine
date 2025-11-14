@@ -1,23 +1,20 @@
 #include <iostream>
-#include <Core//src/ioc/Container.h>
+#include <Core/src/log/EntryBuilder.h>
+#include <Core/src/log/Channel.h>
+#include <Core/src/log/MsvcDebugDriver.h>
+#include <Core/src/log/TextFormatter.h>
 
-struct Base {
-	virtual int Test() {
-		return 100;
-	}
-	virtual ~Base() = default;
-};
+using namespace ales;
+using namespace std::string_literals;
 
-struct Derived : public Base {
-	int Test() override {
-		return 50;
-	}
-};
+#define alelog log::EntryBuilder{ __FILEW__, __FUNCTIONW__, __LINE__ }.chan(pChan.get())
 
 int main()
 {
-	using namespace ales;
-	ioc::Get().Register<Base>([] {return std::make_shared<Derived>(); });
+	std::unique_ptr<log::IChannel> pChan = std::make_unique<log::Channel>(std::vector<std::shared_ptr<log::IDriver>>{
+		std::make_shared<log::MsvcDebugDriver>(std::make_unique<log::TextFormatter>())
+	});
+	alelog.fatal(L"Oh nooo!");
 
-	std::cout << ioc::Get().Resolve<Base>()->Test() << std::endl;
+	return 0;
 }
