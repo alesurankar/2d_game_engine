@@ -31,5 +31,11 @@ int main()
 	alelog.warn(L"huh");
 	f();
 
+	utl::StackTrace st;
+	auto st2 = std::move(st);
+
+	std::wcout << st2.Print() << std::endl;
+	std::wcout << st.Print() << std::endl;
+
 	return 0;
 }
