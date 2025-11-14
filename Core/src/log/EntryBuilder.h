@@ -10,6 +10,12 @@ namespace ales::log
 		EntryBuilder(const wchar_t* sourceFile, const wchar_t* sourceFunctionName, int sourceLine);
 		EntryBuilder& note(std::wstring note);
 		EntryBuilder& level(Level level);
+		EntryBuilder& trace(std::wstring note = L"");
+		EntryBuilder& debug(std::wstring note = L"");
+		EntryBuilder& info(std::wstring note = L"");
+		EntryBuilder& warn(std::wstring note = L"");
+		EntryBuilder& error(std::wstring note = L"");
+		EntryBuilder& fatal(std::wstring note = L"");
 		EntryBuilder& chan(IChannel* pChan);
 		~EntryBuilder();
 	private:

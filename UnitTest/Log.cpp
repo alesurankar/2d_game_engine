@@ -28,7 +28,16 @@ namespace Infrastructure
 			alelog.level(log::Level::Info).note(L"HI").chan(&chan);
 			Assert::AreEqual(L"HI"s, chan.entry_.note_);
 			Assert::IsTrue(log::Level::Info == chan.entry_.level_);
-			Assert::AreEqual(29, chan.entry_.sourceLine_);
+			Assert::AreEqual(28, chan.entry_.sourceLine_);
+		}
+		// testing simplified level/note
+		TEST_METHOD(SimplifiedLevelNote)
+		{
+			MockChannel chan;
+			alelog.info(L"HI").chan(&chan);
+			Assert::AreEqual(L"HI"s, chan.entry_.note_);
+			Assert::IsTrue(log::Level::Info == chan.entry_.level_);
+			Assert::AreEqual(37, chan.entry_.sourceLine_);
 		}
 	};
 }
