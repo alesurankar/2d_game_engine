@@ -25,10 +25,10 @@ namespace ales::log
 		return *this;
 	}
 
-	EntryBuilder& EntryBuilder::trace(std::wstring note)
+	EntryBuilder& EntryBuilder::Verbose(std::wstring note)
 	{
 		note_ = std::move(note);
-		level_ = Level::Trace;
+		level_ = Level::Verbose;
 		return *this;
 	}
 

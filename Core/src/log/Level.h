@@ -4,12 +4,13 @@
 namespace ales::log 
 {
 	enum class Level {
-		Trace,
-		Debug,
-		Info,
-		Warn,
-		Error,
+		None,
 		Fatal,
+		Error,
+		Warn,
+		Info,
+		Debug,
+		Verbose,
 	};
 
 	std::wstring GetLevelName(Level);

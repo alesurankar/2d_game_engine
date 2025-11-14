@@ -5,7 +5,7 @@ namespace ales::log
 {
 	std::wstring GetLevelName(Level lv) {
 		switch (lv) {
-		case Level::Trace: return L"Trace";
+		case Level::Verbose: return L"Trace";
 		case Level::Debug: return L"Debug";
 		case Level::Info: return L"Info";
 		case Level::Warn: return L"Warn";
