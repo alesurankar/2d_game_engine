@@ -4,7 +4,9 @@
 
 namespace ales::log
 {
-	class SeverityLevelPolicy : public IPolicy {
+	class ISeverityLevelPolicy : public IPolicy {};
+
+	class SeverityLevelPolicy : public ISeverityLevelPolicy {
 	public:
 		SeverityLevelPolicy(Level level);
 		bool TransformFilter(Entry&) override;

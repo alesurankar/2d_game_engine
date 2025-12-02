@@ -72,11 +72,16 @@ namespace ales::log
 		pDest_ = pChan;
 		return *this;
 	}
+	EntryBuilder& ales::log::EntryBuilder::trace_skip(int depth)
+	{
+		traceSkipDepth = depth;
+		return *this;
+	}
 	EntryBuilder::~EntryBuilder()
 	{
 		if (pDest_) {
 			if ((int)level_ <= (int)Level::Error) {
-				trace_.emplace(6);
+				trace_.emplace(traceSkipDepth);
 			}
 			pDest_->Submit(*this);
 		}

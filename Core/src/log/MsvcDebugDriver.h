@@ -4,7 +4,9 @@
 
 namespace ales::log
 {
-	class MsvcDebugDriver : public ITextDriver {
+	class IMsvcDebugDriver : public ITextDriver {};
+
+	class MsvcDebugDriver : public IMsvcDebugDriver {
 	public:
 		MsvcDebugDriver(std::shared_ptr<ITextFormatter> pFormatter = {});
 		void Submit(const Entry&) override;

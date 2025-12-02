@@ -17,8 +17,10 @@ namespace ales::log
 		EntryBuilder& error(std::wstring note = L"");
 		EntryBuilder& fatal(std::wstring note = L"");
 		EntryBuilder& chan(IChannel* pChan);
+		EntryBuilder& trace_skip(int depth);
 		~EntryBuilder();
 	private:
 		IChannel* pDest_ = nullptr;
+		int traceSkipDepth = 6;
 	};
 }
